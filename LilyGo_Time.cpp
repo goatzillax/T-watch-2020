@@ -256,9 +256,8 @@ lv_obj_t *setupGUI(void) {
 
     temp_text = lv_label_create(view, nullptr);
     lv_obj_add_style(temp_text, LV_OBJ_PART_MAIN, &temp_style);
-    sprintf(buff, "%2.1f*C", temp/6.0);
     lv_label_set_text(temp_text, buff);
-    lv_obj_align(temp_text, bat_text, LV_ALIGN_OUT_BOTTOM_MID, -10, -5);
+    lv_obj_align(temp_text, bat_text, LV_ALIGN_OUT_BOTTOM_LEFT, -5, -5);
 
     //Power
     static lv_style_t bat_style;
@@ -336,7 +335,7 @@ void LilyGo_Time(uint8_t fullUpdate) {
   if(fullUpdate) {
     setupGUI();
   }
-  sprintf(buff, "%2.1f*C", temp/6.0);
+  sprintf(buff, "%2.1fC", temp);
   lv_label_set_text(temp_text, buff);
   lv_label_set_text(am_pm, (!general_config.twelve_hr_clock) ? "  " : (hh < 12) ? "AM" : "PM");
   sprintf(buff, "%4d", yyear);
